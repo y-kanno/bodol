@@ -1,0 +1,33 @@
+digraph bdg_sns{
+
+#	graph [rankdir=LR, overlap=true, layout=neato, nodesep="0.1", ranksep="0.2", pad="0.5"];
+	graph [rankdir=LR, overlap=true, layout=dot];
+	node [shape=record, fontsize=28, width=2.0];
+	edge [fontsize=28];
+
+
+	user [label="[user]|{{id | email | name | password | created_at | updated_at}|{integer | string | string | string | datetime | datetime}}"];
+
+	user_boardgame [label="[user_boardgame]|{{id | user_id | boardgame_id | created_at | updated_at}|{integer | integer | integer | datetime | datetime}}"];
+
+	boardgame [label="[boardgame]|{{id | name | description | created_at | updated_at}|{integer | string | string |  datetime | datetime}}"];
+
+	team [label="[team]|{{id | name | description | created_at | updated_at}|{integer | string | string | datetime | datetime}}"];
+
+	user_team [label="[user_team]|{{id | team_id | user_id | created_at | updated_at}|{integer | integer | integer | datetime | datetime}}"];
+
+	event [label="[event]|{{id | name | date_from | date_to | description | created_at | updated_at}|{integer | string | datetime | datetime | string | datetime | datetime}}"];
+
+	user_event [label="[user_event]|{{id | user_id | event_id | created_at | updated_at}|{integer | integer | integer | datetime | datetime}}"];
+
+	user -> user_boardgame [label="user_id"];
+	user -> user_team [label="user_id"];
+	user -> user_event [label="user_id"];
+
+	boardgame -> user_boardgame [label="boardgame_id"];
+	team -> user_team [label="team_id"];
+	event -> user_event [label="event_id"];
+
+
+
+}
